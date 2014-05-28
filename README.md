@@ -1,17 +1,13 @@
-# Simple TTC App
+# Thinkful Weather App
 
-A simple static angular application built with ui-router, underscore and gulp
-to help residents of Toronto learn Angular and to use the local transit system.
+A simple static angular application built with angular, underscore and gulp
+to query weather information for the top 100 US cities.
 
-The application makes use of the handy myttc.ca API.
-
-## Working Demo
-
-http://yom.nu/ttc-app
+The application makes use of the handy Open Weather API.
 
 ## Installation
 
-1. Clone from https://github.com/yearofmoo/angular-ttc-app.git
+1. Clone from https://github.com/thinkful/angular-weather-app.git
 
 2. Then run `npm install`
 
@@ -22,9 +18,3 @@ http://yom.nu/ttc-app
 ## Packaging the website
 
 Run `gulp build`. The contents will be created inside of `build/`.
-
-## Slides
-
-The slides are available for this application at:
-
-http://yom.nu/ttc-app-slides
