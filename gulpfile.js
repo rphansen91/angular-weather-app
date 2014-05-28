@@ -9,7 +9,7 @@ var rev = require('gulp-rev');
 var clean = require('gulp-clean');
 
 gulp.task('copy-html-files', function() {
-  gulp.src(['./app/**/*.html', './app/ttc-stations.json', '!./app/index.html'], {base: './app'})
+  gulp.src(['./app/**/*.html', './app/owm-cities.json', '!./app/index.html'], {base: './app'})
     .pipe(gulp.dest('build/'));
 });
 
