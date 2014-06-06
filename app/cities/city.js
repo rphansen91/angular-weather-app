@@ -10,7 +10,9 @@ viewsModule.config(['$routeProvider', function($routeProvider) {
   });
 }]);
 
-viewsModule.controller('CityCtrl', ['$scope', 'cityDetails', function($scope, cityDetails) {
+viewsModule.controller('CityCtrl', ['$scope', 'cityDetails', 'owmHistory',
+                            function($scope,   cityDetails,   owmHistory) {
+  owmHistory.push(cityDetails.city);
   $scope.city = cityDetails.city;
   if($scope.city.country == 'CA') {
     $scope.city.country = 'Canada';
@@ -19,5 +21,4 @@ viewsModule.controller('CityCtrl', ['$scope', 'cityDetails', function($scope, ci
     item.dt_txt = Date.parse(item.dt_txt);
     return item;
   });
-  console.log($scope.forecast);
 }])

@@ -17,17 +17,38 @@
   right:0;
   margin-bottom:0;
 }
+.owm-history {
+  position:absolute;
+  top:60px;
+  background:#666;
+  left:0;
+  right:0;
+  min-height:40px;
+  z-index:99;
+  margin-bottom:0;
+}
+.owm-history,
+.owm-history a {
+  color:white;
+}
+.owm-history-listing {
+  display:inline-block;
+  padding:10px;
+}
+.owm-history-listing + .owm-history-listing:before {
+  content:">>";
+}
 .owm-view {
   position:relative;
   min-height:100%;
-  padding:70px 20px 20px;
+  padding:150px 20px 20px;
 }
 .omw-detail-panel {
   border-left:1px solid #ddd;
   padding-left:20px;
   background:#eee;
   position:absolute;
-  top:60px;
+  top:100px;
   padding-top:20px;
   right:0;
   left:50%;
