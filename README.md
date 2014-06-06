@@ -11,7 +11,7 @@ The application makes use of the handy Open Weather API.
 
 2. Then run `npm install`
 
-3. Then gulp
+3. Then run `gulp`
 
 4. Open a browser at `localhost:8080`.
 
