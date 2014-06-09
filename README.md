@@ -9,7 +9,7 @@ The application makes use of the handy Open Weather API.
 
 1. Clone from https://github.com/thinkful/angular-weather-app.git
 
-2. Then run `npm install`
+2. Then `cd` into the project directory and run `npm install`
 
 3. Then run `gulp`
 
