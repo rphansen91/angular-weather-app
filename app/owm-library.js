@@ -9,12 +9,11 @@ angular.module('owmLibrary', [])
   .factory('owmUSCities', ['$http', '$q', 'OWM_CITIES_JSON_FILE',
                    function($http,   $q,   OWM_CITIES_JSON_FILE) {
     return function() {
-      var defer = $q.defer();
-      $http.get(OWM_CITIES_JSON_FILE, { cache : true })
-        .success(function(cities) {
-          defer.resolve(cities);
-        });
-      return defer.promise;
+      return $http({
+        cache : true,
+        method: 'GET',
+        url: OWM_CITIES_JSON_FILE
+      })
     }
   }])
 
