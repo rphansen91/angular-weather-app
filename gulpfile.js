@@ -9,9 +9,49 @@ var usemin = require('gulp-usemin');
 var rev = require('gulp-rev');
 var clean = require('gulp-clean');
 
-var config = {
-  build: './build'
+var paths = {
+  scripts: [ 'app/**/*.js', '!app/bower_components/**/*.js' ],
+  html: [
+    './app/**/*.html',
+    './app/owm-cities.json',
+    './app/bower_components/font-awesome/fonts/*',
+    '!./app/index.html',
+    '!./app/bower_components/**/*.html'
+  ],
+  index: './app/index.html',
+  build: './build/'
 }
+/* 1 */
+gulp.task('clean', function(){
+  gulp.src( paths.build,  { read: false } )
+    .pipe(clean());
+});
+
+gulp.task('copy', [ 'clean' ], function() {
+  gulp.src( paths.html )
+    .pipe(gulp.dest('build/'));
+});
+
+gulp.task('usemin', [ 'copy' ], function(){
+  gulp.src( paths.index )
+    .pipe(usemin({
+      css: [ minifyCss(), 'concat' ],
+      html: [ minifyHtml({empty: true}) ],
+      js: [ ngmin(), uglify() ]
+    }))
+    .pipe(gulp.dest( paths.build ))
+});
+
+gulp.task('build', ['usemin']);
+
+// connect
+gulp.task('connect', function() {
+  connect.server({
+    root: 'app/'
+  });
+});
+gulp.task('default', ['connect']);
+
 /* 2 */
 // gulp.task('clean', function() {
 //     return gulp
@@ -37,41 +77,3 @@ var config = {
 // });
 
 // gulp.task('default', ['js']);
-
-/* 1 */
-gulp.task('clean', function(){
-  gulp
-    .src( // select the folder
-      [ config.build ],
-      { read: false } // don't read content
-    )
-    .pipe(clean());
-});
-
-gulp.task('copy-html', ['clean'], function() {
-  gulp
-    .src(
-      ['./app/**/*.html', './app/owm-cities.json', '!./app/index.html'],
-      { base: './app' }
-    )
-    .pipe(gulp.dest('build/'));
-});
-
-gulp.task('usemin', function() {
-  gulp.src('./app/index.html')
-    .pipe(usemin({
-      css: [minifyCss(), 'concat', rev()],
-      js: [ngmin({dynamic: true}), rev()]
-    }))
-    .pipe(gulp.dest('build/'));
-});
-
-gulp.task('build', ['copy-html', 'usemin']);
-
-// connect
-gulp.task('connect', function() {
-  connect.server({
-    root: 'app/'
-  });
-});
-gulp.task('default', ['connect']);
