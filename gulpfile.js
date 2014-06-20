@@ -14,7 +14,11 @@ var paths = {
   html: [
     './app/**/*.html',
     './app/owm-cities.json',
-    './app/bower_components/font-awesome/fonts/*',
+    './app/bower_components/font-awesome/**/*.svg',
+    './app/bower_components/font-awesome/**/*.eot',
+    './app/bower_components/font-awesome/**/*.ttf',
+    './app/bower_components/font-awesome/**/*.woff',
+    './app/bower_components/font-awesome/**/*.otf',
     '!./app/index.html',
     '!./app/bower_components/**/*.html'
   ],
@@ -23,7 +27,7 @@ var paths = {
 }
 /* 1 */
 gulp.task('clean', function(){
-  gulp.src( paths.build,  { read: false } )
+  gulp.src( paths.build, { read: false } )
     .pipe(clean());
 });
 
@@ -36,7 +40,6 @@ gulp.task('usemin', [ 'copy' ], function(){
   gulp.src( paths.index )
     .pipe(usemin({
       css: [ minifyCss(), 'concat' ],
-      html: [ minifyHtml({empty: true}) ],
       js: [ ngmin(), uglify() ]
     }))
     .pipe(gulp.dest( paths.build ))

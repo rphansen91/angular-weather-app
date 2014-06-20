@@ -21,10 +21,10 @@
   <div class="navbar owm-history" ng-controller="HistoryCtrl">
     <div ng-repeat="listing in listings" class="owm-history-listing">
       <span ng-if="listing.isHome">
-        <a ng-href="#/">Home</a>
+        <a ng-href="#!/">Home</a>
       </span>
       <span ng-if="listing.isNearMe">
-        <a ng-href="#/near-me">Near Me</a>
+        <a ng-href="#!/near-me">Near Me</a>
       </span>
       <span ng-if="!listing.isHome && !listing.isNearMe">
         <a ng-href="#!/cities/{{ listing.name }}">{{ listing.name }}</a>
