@@ -9,6 +9,6 @@ viewsModule.controller('HomeCtrl', function($scope, owmUSCities, owmHistory) {
   owmHistory.push({ name : "Home", isHome : true });
   owmUSCities()
     .then(function(citiesXhr) {
-      $scope.cities = citiesXhr.data;
+      $scope.cities = citiesXhr;
     });
 });

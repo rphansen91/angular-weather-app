@@ -16,5 +16,5 @@ angular.module('owmHistory', [])
       list : function() {
         return historyQueue;
       }
-    }
+    };
   });

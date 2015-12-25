@@ -4,4 +4,4 @@ angular.module('owmApp', ['owmAppViews', 'ngRoute', 'ngAnimate'])
     $routeProvider.otherwise({
       redirectTo : '/'
     });
-  })
+  });
