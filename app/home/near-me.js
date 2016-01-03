@@ -5,10 +5,9 @@ viewsModule.config(['$routeProvider', function($routeProvider) {
   });
 }]);
 
-viewsModule.controller('NearMeCtrl', ['$scope', 'geolocation', 'owmNearby', '$location', 'owmHistory', '$q',
-  function($scope, geolocation, owmNearby, $location, owmHistory, $q) {
+viewsModule.controller('NearMeCtrl', ['$scope', 'geolocation', 'owmNearby', '$location', '$q',
+  function($scope, geolocation, owmNearby, $location, $q) {
   $scope.loading = true;
-  owmHistory.push({ name : "Near Me", isNearMe : true });
 
   geolocation.getLocation()
     .then(function(data) {

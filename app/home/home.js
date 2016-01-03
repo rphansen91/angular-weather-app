@@ -5,8 +5,7 @@ viewsModule.config(['$routeProvider', function($routeProvider) {
   });
 }]);
 
-viewsModule.controller('HomeCtrl', ['$scope', 'owmUSCities', 'owmHistory', function($scope, owmUSCities, owmHistory) {
-  owmHistory.push({ name : "Home", isHome : true });
+viewsModule.controller('HomeCtrl', ['$scope', 'owmUSCities', function($scope, owmUSCities) {
   owmUSCities()
     .then(function(citiesXhr) {
       $scope.cities = citiesXhr;
