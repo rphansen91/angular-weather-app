@@ -1,4 +1,4 @@
-viewsModule.config(function($routeProvider) {
+viewsModule.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when("/cities/:city", {
     templateUrl : "./cities/city.html",
     controller : 'CityCtrl',
@@ -7,9 +7,9 @@ viewsModule.config(function($routeProvider) {
         return owmFindCity($route.current.params.city);
       }]}
     });
-});
+}]);
 
-viewsModule.controller('CityCtrl', function($scope, cityDetails, owmHistory) {
+viewsModule.controller('CityCtrl', ['$scope', 'cityDetails', 'owmHistory', function($scope, cityDetails, owmHistory) {
   owmHistory.push(cityDetails.city);
   $scope.city = cityDetails.city;
   if($scope.city.country === 'CA') {
@@ -19,4 +19,4 @@ viewsModule.controller('CityCtrl', function($scope, cityDetails, owmHistory) {
     item.dt_txt = Date.parse(item.dt_txt);
     return item;
   });
-});
+}]);

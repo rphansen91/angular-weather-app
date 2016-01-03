@@ -1,11 +1,12 @@
-viewsModule.config(function($routeProvider) {
+viewsModule.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when("/near-me", {
     templateUrl : "./home/near-me.html",
     controller : 'NearMeCtrl'
   });
-});
+}]);
 
-viewsModule.controller('NearMeCtrl', function($scope, geolocation, owmNearby, $location, owmHistory, $q) {
+viewsModule.controller('NearMeCtrl', ['$scope', 'geolocation', 'owmNearby', '$location', 'owmHistory', '$q',
+  function($scope, geolocation, owmNearby, $location, owmHistory, $q) {
   $scope.loading = true;
   owmHistory.push({ name : "Near Me", isNearMe : true });
 
@@ -33,4 +34,4 @@ viewsModule.controller('NearMeCtrl', function($scope, geolocation, owmNearby, $l
     .finally(function(){
       $scope.loading = false;
     });
-});
+}]);

@@ -1,13 +1,13 @@
 angular.module('owmHistory', [])
-	.controller("HistoryCtrl", function(owmHistory, $scope) {
+	.controller("HistoryCtrl", ['owmHistory', '$scope', function(owmHistory, $scope) {
     $scope.$watchCollection(function() {
 				return owmHistory.list();
 			},
 			function(oldListings, newListings) {
 		    $scope.listings = newListings;
 			});
-	})
-  .factory("owmHistory", function() {
+	}])
+  .factory("owmHistory", [function() {
     var historyQueue = [];
     return {
       push : function(entry) {
@@ -17,4 +17,4 @@ angular.module('owmHistory', [])
         return historyQueue;
       }
     };
-  });
+  }]);
